@@ -1,0 +1,51 @@
+/* Only remove the KB title from the left sidebar */
+.md-nav--primary .md-nav__title[for="__drawer"] {
+  display: none;
+}
+
+/* Remove "KB" text from above sections */
+.md-nav--primary > .md-nav__list > [for="__nav_0"] {
+  display: none;
+}
+
+/* Make the site header title consistent */
+.md-header__title {
+  position: relative;
+}
+
+.md-header__title::before {
+  content: "Knowledge Base";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background-color: inherit;
+  z-index: 1;
+}
+
+/* Hide the page-specific titles in the header */
+.md-ellipsis {
+  visibility: hidden;
+}
+
+/* Hide H1 headings in the right-side table of contents */
+.md-sidebar--secondary .md-nav__title {
+  display: none;
+}
+
+/* Change "Table of Contents" title to "Contents" */
+.md-sidebar--secondary .md-nav__title::before {
+  content: "Contents";
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.8rem;
+  color: var(--md-accent-fg-color);
+}
+
+/* Set max depth for TOC to level 4 */
+.md-sidebar--secondary .md-nav--secondary .md-nav .md-nav .md-nav .md-nav {
+  display: none;
+}

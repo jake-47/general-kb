@@ -1,0 +1,224 @@
+# Project configuration for internal documentation
+site_name: "Knowledge Base"
+site_description: Internal documentation for SiteTracker's products and services
+site_author: SiteTracker
+
+# Extra configuration for theme
+
+# Repository (disabled)
+# repo_name: sitetracker/docs
+# repo_url: https://github.com/sitetracker/docs
+# edit_uri: edit/trunk/docs/
+
+# Copyright
+copyright: Copyright &copy; 2023 SiteTracker, Inc. - INTERNAL USE ONLY
+
+# Configuration
+theme:
+  name: material
+  custom_dir: docs/overrides
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: "#101820"
+      accent: "#E4572E"
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: "#101820"
+      accent: "#E4572E"
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: "Source Code Pro"
+  favicon: assets/favicon.svg
+  logo: assets/logo.svg
+  features:
+    - navigation.tracking
+    # Removed navigation.tabs to keep navigation only in the left sidebar
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    # - navigation.expand  # Removed to allow collapsible sections
+    - navigation.path
+    # Enhanced navigation features
+    - navigation.instant
+    - navigation.prune   # Automatically hide nested sections
+    - toc.follow         # Automatically follow table of contents
+    # Collapsible sections with arrow indicators
+    - navigation.collapsible
+    # Content features
+    - content.tabs.link
+    - content.code.copy
+    - content.code.annotate
+    # Section index pages
+    - navigation.indexes
+    # UI features
+    - header.autohide
+    # Search features
+    - search.highlight
+    - search.share
+    - search.suggest
+    # Enable print function 
+    - content.action.print
+
+# Plugins
+plugins:
+  - search
+  - tags
+  - minify:
+      minify_html: true
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  # Custom admonitions
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.critic
+  # Table of contents settings
+  - toc:
+      permalink: true
+      toc_depth: 3
+      baselevel: 2
+  # Math support
+  - pymdownx.arithmatex:
+      generic: true
+  # Various text formatting extensions
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: your-github-org
+      repo: docs
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  # Code blocks and fences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  # Custom admonition setup
+  - admonition
+  - pymdownx.details 
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  
+# Extra CSS and JavaScript
+extra_css:
+  - assets/stylesheets/extra.css
+  - assets/stylesheets/custom-admonitions.css
+extra_javascript:
+  - assets/javascripts/fix-material-errors.js
+  - assets/javascripts/error-handler.js
+  - assets/javascripts/utils.js
+  - assets/javascripts/config/env-config.js
+  - assets/javascripts/config-loader.js
+  - assets/javascripts/internal-content-handler.js
+  - assets/javascripts/extra.js
+  - assets/javascripts/version-dropdown.js
+
+# Page tree - includes both public and internal docs
+nav:
+  - Home:
+    - Overview: home/index.md
+    - Getting Started: home/getting-started.md
+    - Installation: home/installation.md
+    - Configuration: home/configuration.md
+    - Customizations: customizations.md
+  - Usage: 
+    - Overview: usage/index.md
+    - User Guide: usage/user-guide.md
+    - API Overview: usage/api-overview.md
+  - Features:
+    - One-Click Sharing: features/one-click-sharing.md
+    - JIRA Integration: features/jira-integration.md
+  - Examples:
+    - Content Format Example: getting-started/content-format-example.md
+    - Mixed Content Example: getting-started/mixed-content-example.md
+    - Internal Callout Example: getting-started/internal-callout-example.md
+  - Release Notes: 
+    - Overview: release-notes/index.md
+    - Latest Release (March 2025): release-notes/latest.md
+    - Changelog: CHANGELOG.md
+  - Internal:
+    - Overview: internal/index.md
+    - Content Guide: internal/content-guide.md
+    - Internal-Only Content: internal/internal-content.md
+    - Development Guide: internal/development-guide.md
+    - Release Process: internal/release-process.md
+    - Security Reporting: internal/security-reporting.md
+    - Link Validation: internal/link-validation.md
+    - Version Management: internal/version-management.md
+    - Build Differences: internal/build-differences.md
+
+# Social links and other extras
+extra:
+  # Remove the "Made with Material for MkDocs" footer text
+  generator: false
+  # Set a fixed title for all pages
+  title: "Knowledge Base"
+  # Flag to identify internal build
+  internal: true
+  # Enable version selector
+  version:
+    provider: mike
+    default: "v3.5"
+  # Version list for dropdown
+  versions:
+    - title: "Latest Release (v3.5)"
+      url: "/"
+      version: "latest"
+    - title: "Stable Release (v3.4)" 
+      url: "/v3.4/"
+      version: "stable"
+    - title: "December 2023 Release (v3.4)"
+      url: "/v3.4/"
+      version: "2023.3"
+    - title: "August 2023 Release (v3.3)"
+      url: "/v3.3/"
+      version: "2023.2"
+    - title: "March 2023 Release (v3.2)"
+      url: "/v3.2/"
+      version: "2023.1"
+  
+  social:
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/sitetrackerinc
+      name: Sitetracker on X/Twitter
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/sitetracker/
+      name: Sitetracker on LinkedIn
+  
+  # Banner to indicate internal documentation
+  announcement: >-
+    <span style="color:#ff0000; font-weight:bold;">⚠️ INTERNAL DOCUMENTATION ⚠️</span>
+    This documentation is for internal use only. Do not share with unauthorized persons.

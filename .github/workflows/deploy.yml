@@ -1,0 +1,63 @@
+name: Deploy Documentation
+
+# NOTE: This workflow is currently disabled for main branch
+# To deploy documentation, trigger it manually or update this file
+on:
+  push:
+    branches:
+      - trunk-disabled  # Disabled by renaming branch
+      - release/*-disabled  # Disabled by renaming branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs mkdocs-material mkdocs-minify-plugin pymdown-extensions mike
+      
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "github-actions@github.com"
+      
+      - name: Set environment variables
+        id: env
+        run: |
+          if [[ $GITHUB_REF == refs/heads/trunk ]]; then
+            echo "VERSION=latest" >> $GITHUB_ENV
+            echo "ALIAS=latest" >> $GITHUB_ENV
+          elif [[ $GITHUB_REF == refs/heads/release/* ]]; then
+            VERSION=$(echo $GITHUB_REF | sed 's|refs/heads/release/v||')
+            echo "VERSION=$VERSION" >> $GITHUB_ENV
+            echo "ALIAS=$VERSION" >> $GITHUB_ENV
+          fi
+      
+      - name: Deploy public documentation
+        run: |
+          mike deploy --push --update-aliases ${{ env.VERSION }} ${{ env.ALIAS }}
+      
+      - name: Build internal documentation
+        run: ./build.sh internal internal-site
+      
+      - name: Deploy internal documentation
+        if: github.repository == 'your-company/your-product'  # Only deploy internal docs from the main repo
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.DEPLOY_TOKEN }}
+          publish_dir: ./internal-site
+          publish_branch: gh-pages
+          destination_dir: internal/${{ env.VERSION }}
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Deploy internal documentation for ${{ env.VERSION }}'

@@ -1,0 +1,10 @@
+{
+  "versions": [
+    { "version": "latest", "title": "Latest Release", "aliases": ["current"] },
+    { "version": "stable", "title": "Stable Release", "aliases": ["production"] },
+    { "version": "2023.3", "title": "December 2023 Release", "aliases": [] },
+    { "version": "2023.2", "title": "August 2023 Release", "aliases": [] },
+    { "version": "2023.1", "title": "March 2023 Release", "aliases": [] }
+  ],
+  "default": "latest"
+}

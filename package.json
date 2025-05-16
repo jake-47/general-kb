@@ -1,0 +1,26 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "This repository contains the documentation for Sitetracker, built with MkDocs and the Material theme.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "markdownlint 'docs/**/*.md'",
+    "lint:fix": "markdownlint --fix 'docs/**/*.md'",
+    "build:public": "python -m mkdocs build -f mkdocs.yml -d site",
+    "build:internal": "python -m mkdocs build -f mkdocs.internal.yml -d site-internal",
+    "serve:public": "cd site && python -m http.server 5000 --bind 0.0.0.0",
+    "serve:internal": "cd site-internal && python -m http.server 5001 --bind 0.0.0.0",
+    "dev:public": "npm run build:public && npm run serve:public",
+    "dev:internal": "npm run build:internal && npm run serve:internal"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "markdownlint-cli": "^0.44.0"
+  }
+}

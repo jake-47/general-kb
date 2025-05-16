@@ -1,0 +1,70 @@
+/**
+ * Custom Admonitions CSS for SiteTracker Knowledge Base
+ * Styles for custom admonition types including internal-only content
+ */
+
+/* Internal-only admonition style */
+.admonition.internal {
+  border-left-color: #9c27b0; /* Purple color for internal content */
+}
+
+.admonition.internal > .admonition-title {
+  background-color: rgba(156, 39, 176, 0.1);
+  color: #9c27b0;
+}
+
+.admonition.internal > .admonition-title::before {
+  background-color: #9c27b0;
+  /* Lock icon for internal content */
+  -webkit-mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2h1m-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3z"/></svg>');
+  mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2h1m-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3z"/></svg>');
+}
+
+/* Style for internal-only content when using HTML */
+.internal-only {
+  border-left: 4px solid #9c27b0;
+  padding: 0.6rem 1rem;
+  margin: 1rem 0;
+  background-color: rgba(156, 39, 176, 0.05);
+}
+
+.internal-only::before {
+  content: "Internal Only";
+  display: block;
+  font-weight: 700;
+  color: #9c27b0;
+  margin-bottom: 0.5rem;
+}
+
+/* Style for tabbed content with internal content */
+.tabbed-set label.tabbed-internal {
+  background-color: rgba(156, 39, 176, 0.1);
+  border-bottom: 2px solid #9c27b0;
+}
+
+.tabbed-set label.tabbed-internal:after {
+  background-color: #9c27b0;
+}
+
+/* Ensure dark theme compatibility */
+[data-md-color-scheme="slate"] .admonition.internal > .admonition-title {
+  background-color: rgba(156, 39, 176, 0.2);
+  color: #ce93d8;
+}
+
+[data-md-color-scheme="slate"] .admonition.internal {
+  border-left-color: #ce93d8;
+}
+
+[data-md-color-scheme="slate"] .admonition.internal > .admonition-title::before {
+  background-color: #ce93d8;
+}
+
+[data-md-color-scheme="slate"] .internal-only {
+  border-left-color: #ce93d8;
+  background-color: rgba(156, 39, 176, 0.1);
+}
+
+[data-md-color-scheme="slate"] .internal-only::before {
+  color: #ce93d8;
+}

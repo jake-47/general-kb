@@ -1,0 +1,21 @@
+name: Disable Automatic Deployment
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  disable-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Display deployment disabled message
+        run: |
+          echo "Automatic deployment is currently disabled."
+          echo "Documentation deployment has been manually paused."
+          echo "To re-enable deployment, remove this workflow file."
+          exit 0  # Success exit code so workflow passes

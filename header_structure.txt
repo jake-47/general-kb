@@ -1,0 +1,18 @@
+Header Structure (Text Representation):
+
+Knowledge Base Logo [LOGO] | Knowledge Base (Title) | [INTERNAL] | [Theme Toggle] | [Version: v3.5 ▼]
+                                                     ^
+                                                     |
+                               Only one internal indicator, correctly positioned
+
+Based on HTML inspection:
+1. The INTERNAL indicator appears exactly once in the header HTML
+2. It's positioned before the theme toggle button as intended
+3. The indicator has the proper classes: "md-header__environment env-internal"
+4. The JavaScript that was creating a duplicate indicator has been disabled
+
+The issue has been fixed by:
+1. Disabling the JavaScript-based indicator creation in config-loader.js
+2. Keeping only the template-based indicator in header.html
+3. Preserving the code that removes "(Internal)" from page titles
+4. Adding explanatory comments about why the change was made

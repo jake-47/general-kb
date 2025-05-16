@@ -1,0 +1,20 @@
+{% import "partials/language.html" as lang with context %}
+
+<!-- TOC element -->
+{% if page.toc | first is defined %}
+  <nav class="md-nav md-nav--secondary" aria-label="{{ lang.t('toc.title') }}">
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      {% for toc_item in page.toc %}
+        {% if loop.index <= page.meta.toc_depth | default(3) %}
+          {% if toc_item.level <= 4 and toc_item.level > 1 %}
+            {% include "partials/toc-item.html" %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
+{% endif %}

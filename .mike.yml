@@ -1,0 +1,24 @@
+# Mike configuration file for internal versioning
+# This configuration is used for the versioned internal documentation
+
+# MkDocs configuration file to use for version builds
+docs_dir: docs
+config_file: mkdocs.internal.yml
+remote_name: origin
+remote_branch: gh-pages
+
+# Directory used to build and serve the versions
+site_dir: site-internal
+
+# Version aliases - Maps version ids to human-readable names
+aliases:
+  latest: Latest Release
+  stable: Stable Release
+  
+# Customize the directory structure
+structure:
+  # Directory where versions will be built
+  versions_path: releases
+
+# Configures how entries will be shown in versions drop-down
+versions_file: versions.json

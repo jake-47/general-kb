@@ -1,0 +1,1486 @@
+/* SiteTracker themed styles */
+
+:root {
+  --st-primary-color: #101820;
+  --st-secondary-color: #101820;
+  --st-accent-color: #00B2A9;
+  --st-gray-light: #F8F9FC;
+  --st-gray-medium: #D9DCE1;
+  --st-text-color: #101820;
+  --st-text-light: #6B7280;
+  --st-success-color: #00B2A9;
+  --st-warning-color: #FFB400;
+  --st-danger-color: #E4572E;
+  --st-link-color: #00B2A9;
+  --st-dark-blue: #101820;
+}
+
+/* Dark theme variables */
+[data-md-color-scheme="slate"] {
+  --st-primary-color: #ffffff;
+  --st-secondary-color: #f1f1f1;
+  --st-accent-color: #00D2C1;
+  --st-gray-light: #1e2029;
+  --st-gray-medium: #2a2c3a;
+  --st-text-color: #f1f1f1;
+  --st-text-light: #9ca3af;
+  --st-link-color: #00D2C1;
+  --st-dark-blue: #212531;
+  
+  /* Override MkDocs Material dark theme variables */
+  --md-hue: 224deg;
+  --md-default-bg-color: #181a22;
+  --md-default-bg-color--light: rgba(24, 26, 34, 0.54);
+  --md-default-bg-color--lighter: rgba(24, 26, 34, 0.26);
+  --md-default-bg-color--lightest: rgba(24, 26, 34, 0.07);
+  
+  --md-default-fg-color: rgba(255, 255, 255, 0.87);
+  --md-default-fg-color--light: rgba(255, 255, 255, 0.68);
+  --md-default-fg-color--lighter: rgba(255, 255, 255, 0.32);
+  --md-default-fg-color--lightest: rgba(255, 255, 255, 0.07);
+  
+  --md-code-bg-color: #1e2029;
+  --md-code-fg-color: #e0e0e0;
+  
+  --md-typeset-a-color: var(--st-accent-color);
+  --md-typeset-mark-color: rgba(0, 210, 193, 0.22);
+  --md-typeset-kbd-color: #1e2029;
+  --md-typeset-kbd-accent-color: #00D2C1;
+  --md-typeset-kbd-border-color: #2c2e3b;
+}
+
+/* Base theme overrides */
+body {
+  color: var(--st-text-color);
+}
+
+.md-header {
+  background-color: white;
+  color: var(--st-text-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark theme header */
+[data-md-color-scheme="slate"] .md-header {
+  background-color: #1a1c24;
+  color: var(--st-text-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Fix site title in dark mode */
+[data-md-color-scheme="slate"] .md-header__title {
+  color: var(--st-text-color);
+}
+
+[data-md-color-scheme="slate"] .md-header__topic {
+  color: var(--st-text-color);
+}
+
+.md-header-nav__button.md-logo img, 
+.md-header-nav__button.md-logo svg {
+  width: auto;
+  height: 3.2rem;
+  max-width: 320px;
+  margin-left: -18px;
+  padding-top: 0;
+}
+
+.md-nav {
+  font-size: 0.9rem;
+}
+
+.md-nav__link {
+  color: var(--st-text-color);
+}
+
+.md-nav__link:focus, 
+.md-nav__link:hover {
+  color: var(--st-primary-color);
+}
+
+.md-nav__link--active, 
+.md-nav__link--active:focus, 
+.md-nav__link--active:hover {
+  color: var(--st-primary-color);
+  font-weight: 600;
+}
+
+/* Fix left navigation padding and margins */
+.md-nav--primary .md-nav__list {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.md-nav--primary .md-nav__item {
+  padding: 0;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link {
+  padding-left: 0.4rem;
+}
+
+/* Nested items should have slight indentation */
+.md-nav--primary .md-nav__item .md-nav__item .md-nav__link {
+  padding-left: 0.8rem;
+}
+
+.md-nav--primary .md-nav__item .md-nav__item .md-nav__item .md-nav__link {
+  padding-left: 1.2rem;
+}
+
+/* Hide the "Knowledge Base" site title in the navigation */
+.md-nav--primary > .md-nav__title {
+  display: none !important;
+}
+
+.md-typeset a {
+  color: var(--st-link-color);
+}
+
+.md-typeset a:hover {
+  text-decoration: underline;
+}
+
+.md-typeset h1 {
+  color: var(--st-dark-blue);
+  font-weight: 700;
+}
+
+.md-typeset h2 {
+  color: var(--st-secondary-color);
+  font-weight: 600;
+}
+
+.md-typeset h3, 
+.md-typeset h4, 
+.md-typeset h5, 
+.md-typeset h6 {
+  color: var(--st-secondary-color);
+}
+
+.md-footer {
+  background-color: var(--st-dark-blue);
+}
+
+.md-footer-meta {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme specific styling for various components */
+[data-md-color-scheme="slate"] {
+  /* Improved code block styling */
+  --md-code-hl-number-color: #ff8b7c;
+  --md-code-hl-special-color: #ff7daf;
+  --md-code-hl-function-color: #b995e1;
+  --md-code-hl-constant-color: #a7a1ff;
+  --md-code-hl-keyword-color: #7eb6ff;
+  --md-code-hl-string-color: #68e8a9;
+}
+
+[data-md-color-scheme="slate"] .md-typeset code {
+  background-color: var(--st-gray-light);
+  color: #e3e3e3;
+}
+
+[data-md-color-scheme="slate"] .md-nav {
+  color: var(--st-text-color);
+}
+
+[data-md-color-scheme="slate"] .md-nav__link {
+  color: var(--st-text-color);
+}
+
+[data-md-color-scheme="slate"] .md-nav__link:focus, 
+[data-md-color-scheme="slate"] .md-nav__link:hover {
+  color: var(--st-accent-color);
+}
+
+[data-md-color-scheme="slate"] .md-nav__link--active, 
+[data-md-color-scheme="slate"] .md-nav__link--active:focus, 
+[data-md-color-scheme="slate"] .md-nav__link--active:hover {
+  color: var(--st-accent-color);
+}
+
+/* Fix page titles in dark theme */
+[data-md-color-scheme="slate"] .md-typeset h1,
+[data-md-color-scheme="slate"] .md-typeset h2,
+[data-md-color-scheme="slate"] .md-typeset h3,
+[data-md-color-scheme="slate"] .md-typeset h4,
+[data-md-color-scheme="slate"] .md-typeset h5,
+[data-md-color-scheme="slate"] .md-typeset h6 {
+  color: var(--st-text-color);
+}
+
+[data-md-color-scheme="slate"] .md-content__inner h1 {
+  color: var(--st-text-color);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+/* Fix breadcrumbs in dark theme */
+[data-md-color-scheme="slate"] .md-typeset .md-content__button {
+  color: var(--st-text-light);
+}
+
+[data-md-color-scheme="slate"] nav.md-tabs .md-tabs__link {
+  color: var(--st-text-color);
+  opacity: 0.9;
+}
+
+[data-md-color-scheme="slate"] nav.md-tabs .md-tabs__link--active,
+[data-md-color-scheme="slate"] nav.md-tabs .md-tabs__link:hover {
+  color: var(--st-accent-color);
+  opacity: 1;
+}
+
+/* Dark theme admonitions */
+[data-md-color-scheme="slate"] .md-typeset .admonition {
+  border-color: var(--st-gray-medium);
+  background-color: var(--st-gray-light);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .admonition-title {
+  background-color: rgba(42, 44, 58, 0.7);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .admonition.tip {
+  border-color: var(--st-accent-color);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .admonition.tip > .admonition-title {
+  background-color: rgba(0, 210, 193, 0.15);
+}
+
+/* Dark theme tables */
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) {
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+  background-color: var(--st-gray-light);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background-color: var(--st-gray-medium);
+  color: var(--st-text-color);
+}
+
+/* SiteTracker styled buttons */
+.md-button {
+  background-color: var(--st-primary-color);
+  color: white !important;
+  border-radius: 4px;
+  font-weight: 600;
+  padding: 0.6em 1.2em;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.md-button:hover {
+  background-color: #1a78f0;
+  text-decoration: none !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.md-button--secondary {
+  background-color: white;
+  color: var(--st-primary-color) !important;
+  border: 1px solid var(--st-primary-color);
+}
+
+.md-button--secondary:hover {
+  background-color: #f0f7ff;
+}
+
+/* Internal content banner */
+.md-banner {
+  background-color: var(--st-danger-color);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 1em;
+}
+
+/* OS-specific content styling */
+.tabbed-set {
+  margin: 1.5em 0;
+  border-radius: 8px;
+  border: 1px solid var(--st-gray-medium);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.tabbed-set .tabbed-labels {
+  background-color: var(--st-gray-light);
+  border-bottom: 1px solid var(--st-gray-medium);
+}
+
+.tabbed-set .tabbed-labels > label {
+  font-weight: 600;
+  padding: 0.8em 1.2em;
+  color: var(--st-text-color);
+}
+
+.tabbed-set .tabbed-labels > label:hover {
+  color: var(--st-primary-color);
+}
+
+.tabbed-set .tabbed-labels > label:focus {
+  outline-color: var(--st-primary-color);
+}
+
+.tabbed-set .tabbed-content {
+  padding: 1.2em;
+}
+
+.tabbed-set .tabbed-block {
+  padding: 0;
+}
+
+/* Version selector styling */
+.md-version-select {
+  display: flex;
+  align-items: center;
+  padding: 0.7em 0;
+}
+
+.md-version-select select {
+  margin-left: 0.5em;
+  padding: 0.4em 0.8em;
+  border-radius: 4px;
+  border: 1px solid var(--st-gray-medium);
+  background-color: white;
+  color: var(--st-text-color);
+  font-size: 0.9em;
+}
+
+.md-version-select select:focus {
+  border-color: var(--st-primary-color);
+  outline: none;
+}
+
+/* Internal documentation styling */
+
+/* Custom admonition for internal-only content */
+.md-typeset .admonition.internal,
+.md-typeset details.internal {
+  border-color: var(--st-danger-color);
+  background-color: rgba(228, 87, 46, 0.05);
+}
+
+.md-typeset .internal > .admonition-title,
+.md-typeset .internal > summary {
+  background-color: rgba(228, 87, 46, 0.1);
+  color: var(--st-danger-color);
+}
+
+.md-typeset .internal > .admonition-title::before,
+.md-typeset .internal > summary::before {
+  background-color: var(--st-danger-color);
+  /* Using a lock icon for internal content */
+  -webkit-mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2h1m-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3z"/></svg>');
+  mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2h1m-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3z"/></svg>');
+}
+
+/* Legacy internal doc styling (for backward compatibility) */
+.internal-doc {
+  border-left: 4px solid var(--st-danger-color);
+  padding: 1em 1.5em;
+  margin: 1.5em 0;
+  background-color: rgba(228, 87, 46, 0.05);
+  border-radius: 0 4px 4px 0;
+}
+
+.internal-doc::before {
+  content: "INTERNAL";
+  display: block;
+  color: var(--st-danger-color);
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  letter-spacing: 0.5px;
+}
+
+/* API method badges */
+.api-method {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 12px;
+  margin-right: 10px;
+  letter-spacing: 0.5px;
+}
+
+.api-method-get {
+  background-color: #2D8BFF;
+  color: white;
+}
+
+.api-method-post {
+  background-color: var(--st-success-color);
+  color: white;
+}
+
+.api-method-put {
+  background-color: var(--st-warning-color);
+  color: white;
+}
+
+.api-method-delete {
+  background-color: var(--st-danger-color);
+  color: white;
+}
+
+/* Copy button enhancement */
+.md-clipboard {
+  color: var(--st-text-light);
+  transition: all 0.2s ease-in-out;
+}
+
+.md-clipboard:hover {
+  color: var(--st-primary-color);
+  background-color: rgba(45, 139, 255, 0.1);
+  border-radius: 4px;
+}
+
+/* Add visual distinction for platform-specific commands */
+.platform-mac {
+  border-left: 3px solid var(--st-primary-color);
+  padding-left: 15px;
+  margin-left: 5px;
+}
+
+.platform-windows {
+  border-left: 3px solid var(--st-success-color);
+  padding-left: 15px;
+  margin-left: 5px;
+}
+
+.platform-linux {
+  border-left: 3px solid var(--st-warning-color);
+  padding-left: 15px;
+  margin-left: 5px;
+}
+
+/* Code blocks styling */
+.md-typeset pre > code {
+  border-radius: 6px;
+}
+
+.md-typeset code {
+  background-color: rgba(45, 139, 255, 0.05);
+  color: var(--st-primary-color);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+/* Admonition styling (notes, warnings, etc.) */
+.md-typeset .admonition {
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-left-width: 4px;
+}
+
+.md-typeset .admonition.warning {
+  border-color: var(--st-warning-color);
+}
+
+.md-typeset .admonition.warning > .admonition-title {
+  background-color: rgba(255, 180, 0, 0.1);
+}
+
+.md-typeset .admonition.note {
+  border-color: var(--st-primary-color);
+}
+
+.md-typeset .admonition.note > .admonition-title {
+  background-color: rgba(45, 139, 255, 0.1);
+}
+
+.md-typeset .admonition.tip {
+  border-color: var(--st-success-color);
+}
+
+.md-typeset .admonition.tip > .admonition-title {
+  background-color: rgba(0, 210, 193, 0.1);
+}
+
+/* Feedback section - Removed as requested */
+
+/* Dark theme for search */
+[data-md-color-scheme="slate"] .md-search__form {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-md-color-scheme="slate"] .md-search__input {
+  color: var(--st-text-color);
+}
+
+[data-md-color-scheme="slate"] .md-search__input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+[data-md-color-scheme="slate"] .md-search__input:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-md-color-scheme="slate"] .md-search__options {
+  color: var(--st-text-color);
+}
+
+[data-md-color-scheme="slate"] .md-search-result__article {
+  background-color: var(--st-gray-light);
+}
+
+[data-md-color-scheme="slate"] .md-search-result__meta {
+  background-color: var(--st-gray-medium);
+  color: var(--st-text-light);
+}
+
+[data-md-color-scheme="slate"] .md-search-result__title {
+  color: var(--st-text-color);
+}
+
+[data-md-color-scheme="slate"] .search-suggestions {
+  background-color: var(--st-gray-light);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+[data-md-color-scheme="slate"] .search-suggestion:hover {
+  background-color: var(--st-gray-medium);
+  color: var(--st-accent-color);
+}
+
+/* Dark theme print button and other controls */
+[data-md-color-scheme="slate"] .md-header-print-button {
+  color: var(--st-text-color);
+}
+
+[data-md-color-scheme="slate"] .md-header__controls {
+  color: var(--st-text-color);
+}
+
+/* Environment Indicator */
+.md-header__environment {
+  margin-right: 0.7rem;
+  display: flex;
+  align-items: center;
+}
+
+.md-header__env-label {
+  background-color: rgba(228, 87, 46, 0.9);
+  color: white;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* Different environment colors */
+.md-header__environment.env-development .md-header__env-label {
+  background-color: rgba(65, 105, 225, 0.9); /* Royal blue */
+}
+
+.md-header__environment.env-staging .md-header__env-label {
+  background-color: rgba(255, 140, 0, 0.9); /* Dark orange */
+}
+
+.md-header__environment.env-test .md-header__env-label {
+  background-color: rgba(106, 90, 205, 0.9); /* Slate blue */
+}
+
+.md-header__environment.env-internal .md-header__env-label {
+  background-color: rgba(220, 20, 60, 0.9); /* Crimson */
+}
+
+/* Hide internal content in external builds */
+body.external-build .internal-only {
+  display: none !important;
+}
+
+/* Show "Internal Only" tag for internal content in non-production environments */
+body:not(.env-production).internal-build .internal-only::before {
+  content: "Internal Only";
+  display: inline-block;
+  background-color: rgba(220, 20, 60, 0.9);
+  color: white;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+/* Hide login button when using environment detection */
+.md-header__login {
+  display: none;
+}
+
+/* Search bar styling for light mode */
+.md-search__form {
+  background-color: #f1f1f3;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+/* Prevent search bar from extending past logo when activated */
+.md-search__inner {
+  width: 100%;
+  max-width: 20rem; /* Limit the width when expanded */
+}
+
+/* Adjust search bar width on smaller screens */
+@media screen and (max-width: 76.1875em) {
+  .md-search__inner {
+    max-width: 16rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .md-search__inner {
+    max-width: 12rem;
+  }
+}
+
+.md-search__input {
+  color: var(--st-text-color);
+}
+
+.md-search__input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.md-search__input:hover,
+.md-search__form:hover {
+  background-color: #eaeaec;
+  border-color: #d0d0d0;
+}
+
+.md-search__form:focus-within {
+  background-color: #ffffff;
+  border-color: var(--st-primary-color);
+  box-shadow: 0 0 0 2px rgba(16, 24, 32, 0.1);
+}
+
+.md-search__options {
+  color: var(--st-text-color);
+}
+
+.md-search__icon {
+  color: #707070;
+}
+
+/* Print Styles - Fix PDF output */
+@media print {
+  /* General print improvements */
+  html, body {
+    font-size: 12pt !important;
+    color: #000 !important;
+    background-color: #fff !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    min-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: visible !important;
+  }
+  
+  /* Remove all page headers and footers */
+  @page {
+    margin: 0.5cm !important;
+    size: auto !important;
+    marks: none !important;
+  }
+  
+  /* Hide all browser-generated headers, footers, and URLs */
+  @page :first {
+    margin-top: 0 !important;
+  }
+  
+  /* Improve text readability in print */
+  .md-typeset {
+    color: #000 !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* Ensure proper page breaks */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    color: #000 !important;
+  }
+  
+  /* Prevent cut-off content */
+  h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
+    page-break-before: avoid !important;
+    break-before: avoid !important;
+  }
+  
+  /* Show URLs for links */
+  .md-typeset a:after {
+    content: " (" attr(href) ")" !important;
+    font-size: 90% !important;
+    font-style: italic !important;
+    word-wrap: break-word !important;
+  }
+  
+  /* Hide elements unnecessary for print */
+  .md-header,
+  .md-tabs,
+  .md-sidebar,
+  .md-footer,
+  .md-dialog,
+  .md-search,
+  .md-icon,
+  .md-source,
+  .md-nav__title,
+  .md-skip,
+  .md-version-select,
+  .md-header-nav__button,
+  .md-header-nav,
+  .md-header__inner,
+  .md-header__title,
+  .md-header-nav__topic,
+  .md-nav,
+  .md-sidebar--primary,
+  .md-sidebar--secondary,
+  #toc-content,
+  .print-button,
+  #print-button,
+  .print-icon,
+  .md-typeset button,
+  .md-typeset .md-button,
+  title,
+  .md-ellipsis,
+  .md-header__topic,
+  .md-header__option,
+  .md-header__source,
+  .md-header-nav__ellipsis,
+  .md-container > nav,
+  .md-container > header,
+  .md-container > .md-tabs,
+  header,
+  [data-md-component=announce],
+  [data-md-component=header],
+  [data-md-component=hero],
+  [data-md-component=tabs],
+  [data-md-component=skip],
+  [data-md-component=search],
+  [data-md-component=toc],
+  [data-md-toggle],
+  .md-content__icon {
+    display: none !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    visibility: hidden !important;
+    overflow: hidden !important;
+  }
+  
+  /* Ensure main content takes full width with proper spacing */
+  .md-content {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .md-main {
+    padding-top: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  
+  .md-main__inner {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+  }
+  
+  .md-content__inner {
+    margin: 0 !important;
+    padding: 0.5cm !important; /* Add some padding for better print layout */
+    max-width: none !important;
+    width: 100% !important;
+  }
+  
+  /* Ensure article takes full width */
+  .md-grid {
+    max-width: none !important;
+    width: 100% !important;
+  }
+  
+  .md-typeset .md-content__inner {
+    margin: 0 !important;
+    padding: 0.5cm !important;
+    max-width: none !important;
+  }
+  
+  /* Extra width fixes for print */
+  .md-content__container {
+    max-width: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  article {
+    max-width: none !important;
+    width: 100% !important;
+  }
+  
+  .md-typeset {
+    max-width: none !important;
+    width: 100% !important;
+  }
+  
+  /* Adjust title styling for print */
+  .md-typeset h1:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    font-size: 24pt !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+  
+  /* Remove title-specific styles to prevent duplication */
+  .page-title, 
+  .md-typeset h1[id="knowledge-base"],
+  .doc-heading,
+  .site-heading,
+  title,
+  head title {
+    display: none !important;
+  }
+  
+  /* Improve table appearance in print */
+  .md-typeset table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    page-break-inside: avoid !important;
+  }
+  
+  .md-typeset table th,
+  .md-typeset table td {
+    border: 1px solid #ddd !important;
+    padding: 8px !important;
+  }
+  
+  /* Ensure images fit within page */
+  .md-typeset img {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid !important;
+  }
+  
+  /* Fix code blocks for printing */
+  pre, code {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    border: 1pt solid #ddd !important;
+    background-color: #f8f8f8 !important;
+    color: #000 !important;
+    font-size: 10pt !important;
+    page-break-inside: avoid !important;
+  }
+  
+  /* Fix tables for printing */
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    page-break-inside: avoid !important;
+  }
+  
+  table, th, td {
+    border: 1pt solid #ddd !important;
+  }
+  
+  th, td {
+    padding: 6pt 8pt !important;
+  }
+  
+  th {
+    background-color: #f0f0f0 !important;
+  }
+  
+  /* Improve admonition printing */
+  .md-typeset .admonition,
+  .md-typeset details {
+    border: 1pt solid #ddd !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    background-color: #fff !important;
+    border-left-width: 5pt !important;
+    box-shadow: none !important;
+    margin: 1.5em 0 !important;
+    padding: 0 1em !important;
+  }
+  
+  .md-typeset .admonition-title,
+  .md-typeset summary {
+    background-color: #f0f0f0 !important;
+    color: #000 !important;
+    font-weight: bold !important;
+    margin: 0 -1em !important;
+    padding: 0.4em 1em !important;
+  }
+  
+  /* Fix internal-only admonitions */
+  .md-typeset .admonition.internal {
+    border-left-color: #E4572E !important;
+  }
+  
+  .md-typeset .internal > .admonition-title {
+    background-color: #f8f0ee !important;
+    color: #000 !important;
+  }
+  
+  /* Fix specific admonition types */
+  .md-typeset .admonition.note {
+    border-left-color: #2D8BFF !important;
+  }
+  
+  .md-typeset .admonition.warning {
+    border-left-color: #FFB400 !important;
+  }
+  
+  .md-typeset .admonition.tip {
+    border-left-color: #00B2A9 !important;
+  }
+  
+  /* Fix admonition icons */
+  .md-typeset .admonition-title::before,
+  .md-typeset summary::before {
+    content: "!" !important;
+    height: auto !important;
+    width: auto !important;
+    background-color: transparent !important;
+    display: inline-block !important;
+    margin-right: 0.5em !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  
+  /* Print-specific typography refinements */
+  p, ul, ol, dl {
+    orphans: 3 !important; /* Minimum lines to leave at bottom */
+    widows: 3 !important;  /* Minimum lines to leave at top */
+  }
+  
+  img, figure {
+    max-width: 100% !important;
+    page-break-inside: avoid !important;
+  }
+  
+  /* Remove shadows and focus states */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  /* Clean header/footer space */
+  @page {
+    margin: 2cm !important;
+    size: A4 !important;
+  }
+  
+  /* Fix for very wide tables */
+  .md-typeset__scrollwrap {
+    overflow: visible !important;
+  }
+  
+  .md-typeset__table {
+    display: block !important;
+    width: 100% !important;
+    overflow: visible !important;
+  }
+  
+  /* Fix for tab components */
+  .tabbed-set {
+    page-break-inside: avoid !important;
+    display: block !important;
+    border: 1pt solid #ddd !important;
+    margin: 1em 0 !important;
+  }
+  
+  .tabbed-content {
+    display: block !important;
+  }
+  
+  .tabbed-block {
+    display: block !important;
+  }
+  
+  /* Ensure proper contrast for dark theme elements when printed */
+  [data-md-color-scheme="slate"] .md-typeset {
+    color: #000 !important;
+  }
+  
+  [data-md-color-scheme="slate"] .md-typeset h1,
+  [data-md-color-scheme="slate"] .md-typeset h2,
+  [data-md-color-scheme="slate"] .md-typeset h3,
+  [data-md-color-scheme="slate"] .md-typeset h4,
+  [data-md-color-scheme="slate"] .md-typeset h5,
+  [data-md-color-scheme="slate"] .md-typeset h6 {
+    color: #000 !important;
+  }
+  
+  [data-md-color-scheme="slate"] .md-typeset code {
+    background-color: #f8f8f8 !important;
+    color: #000 !important;
+  }
+  
+  /* Print-optimized tables for dark theme */
+  [data-md-color-scheme="slate"] .md-typeset table:not([class]) {
+    background-color: #fff !important;
+    box-shadow: none !important;
+  }
+  
+  [data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+    background-color: #f0f0f0 !important;
+    color: #000 !important;
+  }
+  
+  /* Add document title to the top of each printed page */
+  .md-content__inner::before {
+    content: "Sitetracker Knowledge Base" !important;
+    display: block !important;
+    font-size: 18pt !important;
+    font-weight: bold !important;
+    margin-bottom: 20pt !important;
+    text-align: center !important;
+    border-bottom: 1pt solid #ddd !important;
+    padding-bottom: 10pt !important;
+  }
+}
+
+.md-search__icon.md-icon {
+  opacity: 0.8;
+}
+
+.md-search__icon:hover {
+  color: var(--st-primary-color);
+}
+
+/* Fix for gray patch in the center when search is open */
+.md-search__overlay {
+  background-color: transparent !important;
+}
+
+/* Override Material default behavior for search overlays */
+.md-search__output {
+  z-index: 10;
+}
+
+/* When modal is active, make sure it doesn't show gray overlay */
+.md-search-result {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+[data-md-color-scheme="slate"] .md-search-result {
+  background-color: #1e2029;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Remove any background overlays */
+.md-overlay,
+.md-dialog__inner {
+  background-color: transparent !important;
+}
+
+/* Disable pointer-events on overlay so clicks pass through */
+.md-overlay {
+  pointer-events: none !important;
+}
+
+/* Search suggestions */
+.search-suggestions {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  transform: translateY(100%);
+  background: white;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 0.5em 0;
+  z-index: 10;
+}
+
+.search-suggestions-title {
+  padding: 0.5em 1em;
+  font-size: 0.8em;
+  color: var(--st-text-light);
+  font-weight: 500;
+}
+
+.search-suggestion {
+  padding: 0.6em 1em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-suggestion:hover {
+  background-color: var(--st-gray-light);
+  color: var(--st-primary-color);
+}
+
+/* Code block language badge */
+.code-language-badge {
+  position: absolute;
+  top: 0.5em;
+  right: 2.5em;
+  background: rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+  padding: 0.2em 0.5em;
+  font-size: 0.7em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Table of contents enhancements */
+.md-nav__link--active-visible {
+  color: var(--st-primary-color) !important;
+  font-weight: 600;
+}
+
+/* Enhance collapsible navigation with better arrows */
+.md-nav__toggle {
+  color: var(--st-text-color);
+}
+
+/* Style the collapsible sections to be more visible */
+.md-nav__item--nested > .md-nav__link {
+  font-weight: 600 !important;
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+/* Make the arrow indicators more visible */
+.md-nav__toggle::before {
+  height: 0.65rem !important;
+  width: 0.65rem !important;
+  border-radius: 0 !important;
+  border-width: 0.1rem 0.1rem 0 0 !important;
+  margin-top: 0.35rem !important;
+  margin-left: 0.25rem !important;
+}
+
+/* Add a hover effect to the arrows */
+.md-nav__link:hover .md-nav__toggle::before {
+  border-color: var(--st-accent-color) !important;
+}
+
+/* Highlight current section */
+.md-nav__item--active > .md-nav__link {
+  color: var(--st-accent-color) !important;
+}
+
+/* Ensure both left navigation and right table of contents are visible */
+.md-sidebar {
+  display: block !important;
+}
+
+/* Make sure table of contents is always visible on desktop */
+@media screen and (min-width: 60em) {
+  .md-sidebar--secondary {
+    display: block !important;
+  }
+}
+
+/* Style the Contents header */
+.md-nav__title[for="__toc"] {
+  padding: 0.6rem 0.4rem;
+  color: var(--st-text-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Remove unnecessary margins and padding from TOC items */
+.md-nav--secondary .md-nav__list {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.md-nav--secondary .md-nav__item {
+  padding-left: 0;
+}
+
+.md-nav--secondary .md-nav__link {
+  margin-left: 0;
+  padding-left: 0.4rem;
+}
+
+/* Fix table of contents responsiveness */
+@media screen and (max-width: 76.1875em) {
+  .md-nav--integrated > .md-nav__list {
+    margin-left: 0;
+    padding-left: 0;
+  }
+  
+  .md-nav__title[for="__toc"] {
+    background-color: var(--st-gray-light);
+    border-radius: 4px;
+    padding: 0.6rem 0.4rem;
+  }
+}
+
+/* SiteTracker version label - less prominent */
+.st-version-label {
+  display: flex;
+  align-items: center;
+  margin-left: 1em;
+}
+
+.st-version-label span {
+  color: var(--st-text-light);
+  padding: 0.1em 0.5em;
+  font-size: 0.7rem;
+  font-weight: 400;
+}
+
+/* Version selector in header with GitHub style */
+.md-version {
+  color: var(--st-text-light) !important;
+  font-size: 0.7rem !important;
+  opacity: 0.7;
+}
+
+.md-version:hover {
+  opacity: 1;
+}
+
+.md-version__current {
+  background-color: transparent !important;
+}
+
+/* Mobile controls styling */
+.md-header__controls {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding-right: 0.4rem;
+  height: 100%;
+}
+
+/* Improve title responsiveness */
+.md-header__title {
+  flex-shrink: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Center search while keeping default header width */
+@media screen and (min-width: 60em) {
+  /* Use the default header inner width */
+  .md-header__inner {
+    position: relative;
+  }
+  
+  /* Center the search in available space */
+  .md-search {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18rem;
+    margin: 0;
+    z-index: 1;
+  }
+  
+  /* Controls container for right-aligned elements */
+  .md-header__controls {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    padding-right: 0.8rem;
+    z-index: 2;
+  }
+  
+  /* Control elements styling */
+  .md-header__option {
+    position: static;
+    display: flex;
+    align-items: center;
+    margin-right: 0.4rem;
+    min-width: auto;
+    flex-shrink: 0;
+  }
+  
+  .st-version-label {
+    display: flex;
+    align-items: center;
+    margin-right: 0.4rem;
+    margin-left: 0.4rem;
+    flex-shrink: 0;
+    min-width: auto;
+  }
+  
+  .st-version-label span {
+    line-height: 1;
+    margin-top: 1px;
+    white-space: nowrap;
+  }
+}
+
+/* For larger screens, ensure content area has a reasonable max-width */
+@media screen and (min-width: 76.1875em) {
+  /* Limit main content width for better readability on large screens */
+  .md-main__inner {
+    max-width: 90rem;
+    margin: 0 auto;
+  }
+  
+  .md-content {
+    max-width: calc(100% - 26rem);  /* Give more space to content while still keeping sidebars */
+  }
+  
+  /* Ensure sidebars don't get too wide */
+  .md-sidebar {
+    width: 13rem;
+  }
+}
+
+/* Better responsiveness for medium-sized screens */
+@media screen and (max-width: 76.1875em) and (min-width: 60em) {
+  /* Make sidebars narrower to give more room for content */
+  .md-sidebar--primary {
+    width: 10rem;
+  }
+  
+  .md-sidebar--secondary {
+    width: 10rem;
+  }
+  
+  /* Give more space to the content area */
+  .md-content {
+    max-width: calc(100% - 20rem);
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
+  
+  /* Fix title overflow */
+  .md-header__title {
+    max-width: 12rem;
+  }
+}
+
+/* Small tablets and large phones */
+@media screen and (max-width: 64em) and (min-width: 60em) {
+  /* Further reduce sidebar width */
+  .md-sidebar--primary {
+    width: 8.5rem;
+  }
+  
+  .md-sidebar--secondary {
+    width: 8.5rem;
+  }
+  
+  /* Ensure content has adequate width */
+  .md-content {
+    max-width: calc(100% - 17rem);
+    margin-left: 8.5rem;
+    margin-right: 8.5rem;
+  }
+}
+
+/* Very small screens (mobile) */
+@media screen and (max-width: 59.9375em) {
+  .md-content {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .md-header__title {
+    max-width: 8rem;
+  }
+  
+  /* Ensure sidebars take full width when expanded */
+  .md-sidebar--primary,
+  .md-sidebar--secondary {
+    width: 100%;
+  }
+}
+
+/* Global print button in header */
+.md-header-print-button {
+  background: transparent;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  padding: 0.4rem;
+  margin-right: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+  min-width: auto;
+}
+
+.md-header-print-button:hover {
+  opacity: 1;
+}
+
+.md-header-print-button svg {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+}
+
+/* SiteTracker announcement banner */
+.st-announcement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6em 1em;
+  background-color: rgba(45, 139, 255, 0.08);
+  color: var(--st-primary-color);
+  position: relative;
+}
+
+.st-announcement-content {
+  font-size: 0.9em;
+}
+
+.st-announcement a {
+  color: var(--st-primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 0.5em;
+}
+
+.st-announcement a:hover {
+  text-decoration: underline;
+}
+
+.st-announcement-close {
+  background: none;
+  border: none;
+  color: var(--st-text-light);
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 1em;
+  line-height: 1;
+}
+
+.st-announcement-close:hover {
+  color: var(--st-primary-color);
+}

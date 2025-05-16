@@ -1,0 +1,11 @@
+{% extends "main.html" %}
+
+{% block htmltitle %}
+    <title>{{ page.meta.title }}</title>
+    <meta http-equiv="refresh" content="0; url={% if page.meta.redirect_to %}{{ page.meta.redirect_to }}{% else %}{{ page.next_page.url }}{% endif %}">
+{% endblock %}
+
+{% block content %}
+<h1>Redirecting...</h1>
+<p>This page has moved. If you are not redirected automatically, please follow <a href="{% if page.meta.redirect_to %}{{ page.meta.redirect_to }}{% else %}{{ page.next_page.url }}{% endif %}">this link</a>.</p>
+{% endblock %}
