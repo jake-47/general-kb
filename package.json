@@ -1,7 +1,7 @@
 {
-  "name": "workspace",
+  "name": "knowledge-base",
   "version": "1.0.0",
-  "description": "This repository contains the documentation for Sitetracker, built with MkDocs and the Material theme.",
+  "description": "This repository contains documentation built with MkDocs and the Material theme.",
   "main": "index.js",
   "directories": {
     "doc": "docs"

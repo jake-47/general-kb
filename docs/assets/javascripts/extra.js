@@ -1,4 +1,4 @@
-// SiteTracker Documentation - Enhanced JavaScript
+// Knowledge Base - Enhanced JavaScript
 
 /**
  * OS Detection and Tab Selection
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const enhanceSearch = () => {
       const searchTerm = searchInput.value.toLowerCase();
       if (searchTerm.length > 2) {
-        // Add common SiteTracker terms as suggestions
+        // Add common terms as suggestions
         const suggestions = [
           'api', 'projects', 'configuration', 'mobile', 'fields', 'workflow', 
           'install', 'permissions', 'integration', 'reports'
@@ -397,8 +397,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /**
- * SiteTracker Branding Enhancement
- * Adds subtle SiteTracker branding elements
+ * Company Branding Enhancement
+ * Adds subtle company branding elements
  * Tries to fetch version from GitHub if possible
  */
 document.addEventListener('DOMContentLoaded', function() {

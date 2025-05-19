@@ -4,7 +4,7 @@ This page demonstrates how to use the new internal admonition for marking conten
 
 ## Using the Internal Admonition
 
-Sitetracker Knowledge Base offers a special admonition type for internal-only content. This content will be:
+This Knowledge Base offers a special admonition type for internal-only content. This content will be:
 
 - Visible in the internal build with special styling
 - Hidden completely in the external build

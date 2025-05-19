@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Verify Documentation Script for Sitetracker Knowledge Base
+# Verify Documentation Script for Knowledge Base
 # This script performs comprehensive quality checks on the documentation:
 # 1. Markdown linting (with auto-fixing of common issues)
 # 2. Link validation (both internal and external links)
@@ -27,7 +27,7 @@ IGNORE_PATTERNS=()
 # Display banner
 function show_banner {
     echo -e "${BLUE}════════════════════════════════════════════════════════════════${NC}"
-    echo -e "${BLUE}   Sitetracker Knowledge Base Documentation Verification Tool   ${NC}"
+    echo -e "${BLUE}   Knowledge Base Documentation Verification Tool   ${NC}"
     echo -e "${BLUE}════════════════════════════════════════════════════════════════${NC}"
     echo
 }
@@ -168,7 +168,7 @@ _Generated on: $(date)_
 
 ## Summary
 
-This report summarizes the results of documentation verification for the Sitetracker Knowledge Base.
+This report summarizes the results of content verification for the Knowledge Base.
 
 | Check Type | Status | Details |
 |------------|--------|---------|
