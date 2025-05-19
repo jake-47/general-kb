@@ -1735,3 +1735,15 @@ h6:hover .md-link-copy {
   background-color: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.2);
 }
+
+.md-header__env-label {
+  background-color: #b91c1c;
+  color: white;
+  font-weight: bold;
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}

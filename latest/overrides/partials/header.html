@@ -61,8 +61,11 @@
       </div>
       
       <!-- 3. Version indicator for internal builds (last item) -->
-      {% if config.extra.version and config.extra.internal %}
-        {% include "partials/version-indicator.html" %}
+            {# INTERNAL badge only, no version label #}
+      {% if config.extra.internal %}
+        <div class="md-header__environment env-internal">
+          <span class="md-header__env-label">INTERNAL</span>
+        </div>
       {% endif %}
     </div>
   </nav>
