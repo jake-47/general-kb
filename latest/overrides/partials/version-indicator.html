@@ -1,0 +1,118 @@
+{% if config.extra.version %}
+<div class="md-version-indicator" aria-label="Select version">
+  <span class="md-version-label">{{ config.extra.version.default }}</span>
+  <span class="md-version-arrow">▼</span>
+  
+  <div class="md-version-dropdown">
+    {% for version in config.extra.versions %}
+      <a href="{{ version.url }}" class="md-version-item" {% if version.version == config.extra.version.default %}aria-current="true"{% endif %}>
+        {% if version.version == config.extra.version.default %}✓ {% endif %}{{ version.title }}
+      </a>
+    {% endfor %}
+    <a href="/internal/version-management/" class="md-version-item md-version-item-special">Version Management</a>
+  </div>
+</div>
+<style>
+  .md-version-indicator {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 0.8rem;
+    font-size: 0.65rem;
+    cursor: pointer;
+    position: relative;
+    color: var(--md-default-fg-color--light);
+    letter-spacing: 0.02em;
+    user-select: none;
+  }
+  
+  .md-version-label {
+    font-weight: 600;
+  }
+  
+  .md-version-arrow {
+    margin-left: 2px;
+    font-size: 0.4rem;
+    opacity: 0.7;
+    vertical-align: middle;
+    transition: transform 0.2s;
+  }
+  
+  .md-version-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1000;
+    display: none;
+    min-width: 12rem;
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0;
+    font-size: 0.7rem;
+    color: var(--md-default-fg-color);
+    text-align: left;
+    list-style: none;
+    background-color: var(--md-default-bg-color);
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.25rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Show dropdown on hover for non-touch devices */
+  .md-version-indicator:not(.md-version-indicator--touch):hover .md-version-dropdown {
+    display: block;
+  }
+  
+  /* For click actions */
+  .md-version-dropdown--visible {
+    display: block !important;
+  }
+  
+  .md-version-indicator:focus {
+    outline: 2px solid var(--md-accent-fg-color);
+    outline-offset: 2px;
+  }
+  
+  .md-version-indicator:focus:not(:focus-visible) {
+    outline: none;
+  }
+  
+  .md-version-item {
+    display: block;
+    padding: 0.25rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: var(--md-default-fg-color);
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    text-decoration: none;
+  }
+  
+  .md-version-item:hover, .md-version-item:focus {
+    color: var(--md-accent-fg-color);
+    text-decoration: none;
+    background-color: var(--md-default-bg-color--lightest);
+  }
+  
+  .md-version-item--active {
+    font-weight: 600;
+    color: var(--md-accent-fg-color);
+  }
+  
+  .md-version-item-special {
+    border-top: 1px solid rgba(0,0,0,0.05);
+    margin-top: 0.25rem;
+    padding-top: 0.25rem;
+  }
+  
+  [data-md-color-scheme="slate"] .md-version-dropdown {
+    background-color: var(--md-default-bg-color);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  [data-md-color-scheme="slate"] .md-version-item-special {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+</style>
+{% endif %}
