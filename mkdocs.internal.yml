@@ -1,9 +1,8 @@
 # Project configuration for internal documentation
+## This is the main configuration file that contains most of your internal site settings
 site_name: "Knowledge Base"
 site_description: Internal documentation for SiteTracker's products and services
 site_author: SiteTracker
-
-# Extra configuration for theme
 
 # Repository (disabled)
 # repo_name: sitetracker/docs
@@ -109,8 +108,10 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shortener: true
       repo_url_shorthand: true
-      user: your-github-org
+      user: sitetracker
       repo: docs
   - pymdownx.mark
   - pymdownx.smartsymbols
@@ -145,32 +146,29 @@ extra_javascript:
   - assets/javascripts/internal-content-handler.js
   - assets/javascripts/extra.js
   - assets/javascripts/version-dropdown.js
+  - assets/javascripts/auto-link.js
 
 # Page tree - includes both public and internal docs
 nav:
-  - Home:
-    - Overview: home/index.md
+  - Home: home/index.md
     - Getting Started: home/getting-started.md
     - Installation: home/installation.md
     - Configuration: home/configuration.md
     - Customizations: customizations.md
-  - Usage: 
-    - Overview: usage/index.md
+  - Usage: usage/index.md
     - User Guide: usage/user-guide.md
     - API Overview: usage/api-overview.md
-  - Features:
+  - Features: features/index.md
     - One-Click Sharing: features/one-click-sharing.md
     - JIRA Integration: features/jira-integration.md
-  - Examples:
+  - Examples: getting-started/index.md
     - Content Format Example: getting-started/content-format-example.md
     - Mixed Content Example: getting-started/mixed-content-example.md
     - Internal Callout Example: getting-started/internal-callout-example.md
-  - Release Notes: 
-    - Overview: release-notes/index.md
+  - Release Notes: release-notes/index.md
     - Latest Release (March 2025): release-notes/latest.md
     - Changelog: CHANGELOG.md
-  - Internal:
-    - Overview: internal/index.md
+  - Internal: internal/index.md
     - Content Guide: internal/content-guide.md
     - Internal-Only Content: internal/internal-content.md
     - Development Guide: internal/development-guide.md

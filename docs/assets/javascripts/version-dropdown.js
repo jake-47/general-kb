@@ -1,8 +1,8 @@
 /**
  * Version Dropdown Toggle Script for SiteTracker Knowledge Base
  * 
- * This script adds a dropdown menu for version selection in the internal Knowledge Base.
- * It creates and manages a dropdown menu when the version indicator is clicked.
+ * This script enhances the existing dropdown menu for version selection in the internal Knowledge Base.
+ * It adds click functionality while preserving the hover effect, and loads versions dynamically.
  */
 
 // Initialize when the document is ready
@@ -10,14 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
   // Only run on internal documentation
   if (window.DOCS_ENV && window.DOCS_ENV.isInternal === true) {
     console.log("Setting up version dropdown for internal documentation");
-    setupVersionDropdown();
+    enhanceVersionDropdown();
   }
 });
 
 /**
- * Sets up the version dropdown menu
+ * Enhances the existing version dropdown with additional functionality
  */
-function setupVersionDropdown() {
+function enhanceVersionDropdown() {
   try {
     // Find the version indicator 
     const versionIndicator = document.querySelector('.md-version-indicator');
@@ -26,141 +26,142 @@ function setupVersionDropdown() {
       console.log("Version indicator not found. This is expected in external builds.");
       return;
     }
-  
-    // Create dropdown element
-    const dropdown = document.createElement('div');
-    dropdown.className = 'md-version-dropdown';
-    dropdown.style.cssText = `
-      position: absolute;
-      top: 100%;
-      left: 0;
-      z-index: 1000;
-      display: none;
-      min-width: 10rem;
-      padding: 0.5rem 0;
-      margin: 0.125rem 0 0;
-      font-size: 0.8rem;
-      color: var(--md-default-fg-color);
-      text-align: left;
-      list-style: none;
-      background-color: var(--md-default-bg-color);
-      background-clip: padding-box;
-      border: 1px solid rgba(0, 0, 0, 0.15);
-      border-radius: 0.25rem;
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
-    `;
-  
-    // Add versions
-    const versions = [
-      { url: '/', title: 'Latest Release (v3.5)' },
-      { url: '/v3.4/', title: 'Stable Release (v3.4)' },
-      { url: '/v3.4/', title: 'December 2023 Release (v3.4)' },
-      { url: '/v3.3/', title: 'August 2023 Release (v3.3)' },
-      { url: '/v3.2/', title: 'March 2023 Release (v3.2)' }
-    ];
+
+    // Find the existing dropdown
+    const dropdown = versionIndicator.querySelector('.md-version-dropdown');
     
-    // Add version items to dropdown
-    for (let i = 0; i < versions.length; i++) {
-      try {
-        const version = versions[i];
-        if (!version) continue;
-        
-        const item = document.createElement('a');
-        item.href = version.url || '#';
-        item.textContent = version.title || 'Unknown Version';
-        item.className = 'md-version-item';
-        item.style.cssText = `
-          display: block;
-          padding: 0.25rem 1.5rem;
-          clear: both;
-          font-weight: 400;
-          color: var(--md-default-fg-color);
-          text-align: inherit;
-          white-space: nowrap;
-          background-color: transparent;
-          border: 0;
-          text-decoration: none;
-        `;
-        
-        // Add hover effects
-        item.addEventListener('mouseover', function() {
-          this.style.backgroundColor = 'var(--md-default-bg-color--lightest)';
-          this.style.color = 'var(--md-accent-fg-color)';
-        });
-        
-        item.addEventListener('mouseout', function() {
-          this.style.backgroundColor = 'transparent';
-          this.style.color = 'var(--md-default-fg-color)';
-        });
-        
-        dropdown.appendChild(item);
-      } catch (err) {
-        console.warn('Error creating version item:', err);
-      }
-    }
-  
-    // Add management link
-    try {
-      const managementLink = document.createElement('a');
-      managementLink.href = '/internal/version-management/';
-      managementLink.textContent = '✓ Version Management';
-      managementLink.className = 'md-version-item md-version-item-special';
-      managementLink.style.cssText = `
-        display: block;
-        padding: 0.25rem 1.5rem;
-        clear: both;
-        font-weight: 400;
-        color: var(--md-default-fg-color);
-        text-align: inherit;
-        white-space: nowrap;
-        background-color: transparent;
-        border: 0;
-        text-decoration: none;
-        border-top: 1px solid rgba(0,0,0,0.1);
-        margin-top: 0.5rem;
-        padding-top: 0.5rem;
-      `;
-      
-      // Add hover effects
-      managementLink.addEventListener('mouseover', function() {
-        this.style.backgroundColor = 'var(--md-default-bg-color--lightest)';
-        this.style.color = 'var(--md-accent-fg-color)';
-      });
-      
-      managementLink.addEventListener('mouseout', function() {
-        this.style.backgroundColor = 'transparent';
-        this.style.color = 'var(--md-default-fg-color)';
-      });
-      
-      dropdown.appendChild(managementLink);
-    } catch (err) {
-      console.warn('Error adding management link:', err);
+    if (!dropdown) {
+      console.warn("Version dropdown not found in the DOM.");
+      return;
     }
     
-    // Add dropdown to the DOM
-    versionIndicator.style.position = 'relative';
-    versionIndicator.appendChild(dropdown);
+    // Add an active indicator to the current version
+    highlightCurrentVersion(dropdown);
     
-    // Toggle dropdown on click
+    // Make clicking on the version label also toggle the dropdown
     versionIndicator.addEventListener('click', function(e) {
-      try {
-        e.stopPropagation();
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-      } catch (err) {
-        console.warn('Error toggling dropdown:', err);
+      e.stopPropagation();
+      
+      // Toggle dropdown visibility
+      const isVisible = dropdown.classList.contains('md-version-dropdown--visible');
+      
+      if (isVisible) {
+        hideDropdown(dropdown);
+      } else {
+        showDropdown(dropdown);
       }
     });
     
     // Close dropdown when clicking outside
     document.addEventListener('click', function() {
-      try {
-        dropdown.style.display = 'none';
-      } catch (err) {
-        console.warn('Error closing dropdown:', err);
+      hideDropdown(dropdown);
+    });
+    
+    // Prevent dropdown from closing when clicking inside it
+    dropdown.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+    
+    // Add keyboard navigation
+    versionIndicator.addEventListener('keydown', function(e) {
+      // Toggle dropdown on Enter or Space
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const isVisible = dropdown.classList.contains('md-version-dropdown--visible');
+        
+        if (isVisible) {
+          hideDropdown(dropdown);
+        } else {
+          showDropdown(dropdown);
+        }
+      }
+      
+      // Close on Escape
+      if (e.key === 'Escape') {
+        hideDropdown(dropdown);
       }
     });
     
+    // Add touch device support
+    if ('ontouchstart' in window) {
+      versionIndicator.classList.add('md-version-indicator--touch');
+    }
+    
+    // Make the indicator keyboard focusable
+    versionIndicator.tabIndex = 0;
+    versionIndicator.setAttribute('role', 'button');
+    versionIndicator.setAttribute('aria-haspopup', 'true');
+    versionIndicator.setAttribute('aria-expanded', 'false');
+    
+    console.log("Version dropdown enhanced successfully");
   } catch (err) {
-    console.warn('Error setting up version dropdown:', err);
+    console.warn('Error enhancing version dropdown:', err);
+  }
+}
+
+/**
+ * Helper function to show dropdown
+ */
+function showDropdown(dropdown) {
+  dropdown.classList.add('md-version-dropdown--visible');
+  dropdown.style.display = 'block';
+  
+  // Update ARIA state
+  const indicator = dropdown.closest('.md-version-indicator');
+  if (indicator) {
+    indicator.setAttribute('aria-expanded', 'true');
+  }
+}
+
+/**
+ * Helper function to hide dropdown
+ */
+function hideDropdown(dropdown) {
+  dropdown.classList.remove('md-version-dropdown--visible');
+  dropdown.style.display = '';
+  
+  // Update ARIA state
+  const indicator = dropdown.closest('.md-version-indicator');
+  if (indicator) {
+    indicator.setAttribute('aria-expanded', 'false');
+  }
+}
+
+/**
+ * Highlights the current version in the dropdown
+ */
+function highlightCurrentVersion(dropdown) {
+  try {
+    // Get the current path
+    const currentPath = window.location.pathname;
+    
+    // Find all version links
+    const versionItems = dropdown.querySelectorAll('.md-version-item');
+    
+    versionItems.forEach(function(item) {
+      // Skip the management link
+      if (item.classList.contains('md-version-item-special')) {
+        return;
+      }
+      
+      const versionPath = new URL(item.href, window.location.origin).pathname;
+      
+      // Simple path matching (can be enhanced for more complex paths)
+      if (currentPath === versionPath || 
+          (versionPath === '/' && currentPath === '/') ||
+          (versionPath !== '/' && currentPath.startsWith(versionPath))) {
+        
+        // Mark as active
+        item.classList.add('md-version-item--active');
+        item.setAttribute('aria-current', 'true');
+        
+        // Add a checkmark
+        if (!item.textContent.startsWith('✓ ')) {
+          item.textContent = '✓ ' + item.textContent;
+        }
+      }
+    });
+  } catch (err) {
+    console.warn('Error highlighting current version:', err);
   }
 }

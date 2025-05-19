@@ -27,12 +27,17 @@ if (typeof safeQuerySelectorAll !== 'function') {
  * This ensures all DOM elements are available for manipulation
  */
 function initInternalContentHandler() {
-  // Use DOMContentLoaded with a try-catch block for safety
   try {
-    document.addEventListener('DOMContentLoaded', function() {
-      // Use a slight delay to ensure all components are initialized
-      setTimeout(processInternalContent, 500);
-    });
+    // Use requestAnimationFrame for better performance
+    // This runs after the page layout is complete but before painting
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        requestAnimationFrame(processInternalContent);
+      });
+    } else {
+      // Document already loaded
+      requestAnimationFrame(processInternalContent);
+    }
   } catch (err) {
     console.warn('Error setting up internal content handler:', err.message);
   }
@@ -70,20 +75,20 @@ function processInternalContent() {
  */
 function hideElements(selector) {
   try {
-    // Use our safe query function if available
     const elements = typeof safeQuerySelectorAll === 'function' 
       ? safeQuerySelectorAll(selector) 
       : document.querySelectorAll(selector);
     
     if (elements && elements.length > 0) {
       for (var i = 0; i < elements.length; i++) {
-        if (elements[i] && elements[i].style) {
-          elements[i].style.display = 'none';
+        if (elements[i] && elements[i].parentNode) {
+          // Remove the element entirely rather than just hiding it
+          elements[i].parentNode.removeChild(elements[i]);
         }
       }
     }
   } catch (e) {
-    console.warn('Error hiding elements with selector ' + selector + ':', e);
+    console.warn('Error removing elements with selector ' + selector + ':', e);
   }
 }
 

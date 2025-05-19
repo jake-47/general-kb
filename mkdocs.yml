@@ -1,4 +1,5 @@
 # Project configuration for external/public documentation
+## This is the main configuration file that contains most of your site settings
 site_name: "Knowledge Base"
 site_description: Knowledge Base for Sitetracker's products and services
 site_author: SiteTracker
@@ -86,6 +87,15 @@ extra:
   #   application_id: !ENV ALGOLIA_APP_ID
   #   api_key: !ENV ALGOLIA_API_KEY  # Search-only API key
   #   index_name: !ENV ALGOLIA_INDEX_NAME
+  social:
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/sitetrackerinc
+      name: Sitetracker on X/Twitter
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/sitetracker/
+      name: Sitetracker on LinkedIn
+  version:
+    provider: mike
 
 # Enable additional plugins
 plugins:
@@ -123,8 +133,10 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shortener: true
       repo_url_shorthand: true
-      user: your-github-org
+      user: sitetracker
       repo: docs
   - pymdownx.mark
   - pymdownx.smartsymbols
@@ -152,37 +164,24 @@ extra_javascript:
   - assets/javascripts/internal-content-handler.js
   - assets/javascripts/extra.js
   - assets/javascripts/algolia-search.js
+  - assets/javascripts/auto-link.js
 
 # Page tree
 nav:
-  - Home:
-    - Overview: home/index.md
+  - Home: home/index.md
     - Getting Started: home/getting-started.md
     - Installation: home/installation.md
     - Configuration: home/configuration.md
     - Customizations: customizations.md
-  - Usage: 
-    - Overview: usage/index.md
+  - Usage: usage/index.md
     - User Guide: usage/user-guide.md
     - API Overview: usage/api-overview.md
-  - Features:
+  - Features: features/index.md
     - One-Click Sharing: features/one-click-sharing.md
     - JIRA Integration: features/jira-integration.md
-  - Examples:
+  - Examples: getting-started/index.md
     - Content Format Example: getting-started/content-format-example.md
     - Mixed Content Example: getting-started/mixed-content-example.md
-  - Release Notes: 
-    - Overview: release-notes/index.md
+  - Release Notes: release-notes/index.md
     - Latest Release (March 2025): release-notes/latest.md
     - Changelog: CHANGELOG.md
-
-extra:
-  social:
-    - icon: fontawesome/brands/x-twitter
-      link: https://x.com/sitetrackerinc
-      name: Sitetracker on X/Twitter
-    - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/company/sitetracker/
-      name: Sitetracker on LinkedIn
-  version:
-    provider: mike

@@ -1634,3 +1634,104 @@ body:not(.env-production).internal-build .internal-only::before {
 .st-announcement-close:hover {
   color: var(--st-primary-color);
 }
+
+/* Version selector styles */
+.md-version-select {
+  margin-left: 1rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.md-version-select__dropdown {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: currentColor;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  min-width: 180px;
+}
+
+.md-version-select__dropdown option {
+  background-color: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+}
+
+/* Dark mode adjustments */
+[data-md-color-scheme="slate"] .md-version-select__dropdown {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Link copy button styles */
+.md-link-copy {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0;
+  margin-left: 0.5rem;
+  background: none;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+h2:hover .md-link-copy,
+h3:hover .md-link-copy,
+h4:hover .md-link-copy,
+h5:hover .md-link-copy,
+h6:hover .md-link-copy {
+  opacity: 0.5;
+}
+
+.md-link-copy:hover {
+  opacity: 1 !important;
+}
+
+.md-link-copy--success {
+  color: var(--md-accent-fg-color);
+  opacity: 1 !important;
+}
+
+/* Add a subtle flash effect for feedback */
+@keyframes link-copied {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.md-link-copy--success svg {
+  animation: link-copied 0.3s ease-in-out;
+}
+
+/* Enhanced version selector styling */
+.md-version-select {
+  position: relative;
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+.md-version-select__dropdown {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: currentColor;
+  padding: 0.25rem 1.5rem 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 0.5rem) center;
+  min-width: 180px;
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Dark mode adjustments */
+[data-md-color-scheme="slate"] .md-version-select__dropdown {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}

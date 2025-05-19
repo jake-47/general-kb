@@ -1,0 +1,11 @@
+<!-- Meta tags for environment detection and configuration -->
+{% if config.extra.internal %}
+<meta name="site-internal" content="true">
+{% else %}
+<meta name="site-internal" content="false">
+{% endif %}
+
+<!-- For version info -->
+{% if config.extra.version %}
+<meta name="site-version" content="{{ config.extra.version.default | default('latest') }}">
+{% endif %}
