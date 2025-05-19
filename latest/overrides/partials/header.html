@@ -1,73 +1,39 @@
-<!-- Don't add or change anything in this file to avoid infinite recursion when including -->
 <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid">
-    <!-- Logo and title -->
-    <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}" title="{{ config.site_name }}" class="md-header__button md-logo" aria-label="{{ config.site_name }}">
-      {% include "partials/logo.html" %}
-    </a>
+  <div class="md-header__inner md-grid">
+
+    <!-- Logo + site name -->
     <div class="md-header__title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            {{ config.site_name }}
-          </span>
-        </div>
-        <div class="md-header__topic md-ellipsis">
-          {% if page and page.title %}
-            {{ page.title }}
-          {% endif %}
-        </div>
-      </div>
+      <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}" title="{{ config.site_name }}">
+        {% if config.theme.logo %}
+          <img src="{{ config.theme.logo | url }}" alt="{{ config.site_name }}" class="md-logo" />
+        {% endif %}
+        <span class="md-header__title-text">{{ config.site_name }}</span>
+      </a>
     </div>
-    
-    <!-- Search box -->
-    {% if "search" in config.plugins %}
-      <label class="md-header__button md-icon" for="__search">
-        {% include ".icons/material/magnify.svg" %}
-      </label>
-      {% include "partials/search.html" %}
-    {% endif %}
-    
-    <!-- Right-aligned elements - each with clear spacers between them -->
-    <div class="md-header__right">
-      <!-- 1. INTERNAL indicator (if internal build) -->
-      {% if config.extra.internal %}
-        <div class="md-header__environment env-internal">
-          <span class="md-header__env-label">INTERNAL</span>
-        </div>
-      {% endif %}
-      
-      <!-- 2. Theme toggle -->
+
+    <!-- Search -->
+    <div class="md-search" data-md-component="search"></div>
+
+    <!-- Header controls: palette toggle, print, env badge -->
+    <div class="md-header__controls">
+
+      <!-- Dark/light mode toggle -->
+      <div class="md-header__option" data-md-component="palette"></div>
+
+      <!-- Print button -->
       <div class="md-header__option">
-        <div class="md-select">
-          <button class="md-header__button md-icon">
-            {% include ".icons/material/brightness-4.svg" %}
-          </button>
-          <div class="md-select__inner">
-            <ul class="md-select__list">
-              <li class="md-select__item">
-                <button class="md-select__link" data-md-color-scheme="default" data-md-color-primary="{{ config.theme.primary | replace(' ', '-') }}" data-md-color-accent="{{ config.theme.accent | replace(' ', '-') }}">
-                  {{ lang.t("color.scheme.preference") }}
-                </button>
-              </li>
-              <li class="md-select__item">
-                <button class="md-select__link" data-md-color-scheme="slate" data-md-color-primary="{{ config.theme.primary | replace(' ', '-') }}" data-md-color-accent="{{ config.theme.accent | replace(' ', '-') }}">
-                  {{ lang.t("color.scheme.slate") }}
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <button class="md-header-print-button" onclick="window.print()" title="Print this page">
+          {% include ".icons/material/printer.svg" %}
+        </button>
       </div>
-      
-      <!-- 3. Version indicator for internal builds (last item) -->
-            {# INTERNAL badge only, no version label #}
+
+      <!-- INTERNAL label if internal build -->
       {% if config.extra.internal %}
         <div class="md-header__environment env-internal">
           <span class="md-header__env-label">INTERNAL</span>
         </div>
       {% endif %}
+
     </div>
-  </nav>
+  </div>
 </header>
-<!-- Version selector will be handled by simple-version-selector.js -->
