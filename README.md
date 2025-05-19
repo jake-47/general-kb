@@ -91,35 +91,16 @@ venv\Scripts\activate
 Open a new terminal to run both builds simultaneously.
 
 
-# Terminal 1: Run the external version on port 5000
+### Writing rules
 
-# Terminal 2: Run the internal version on port 5001
-./build.sh internal site-internal development serve 5001
-Directory Structure
-knowledge-base/
-├── docs/                       # Main documentation content
-│   ├── assets/                 # Static assets (JS, CSS, images)
-│   │   ├── javascripts/        # JavaScript files
-│   │   └── stylesheets/        # CSS files
-│   ├── overrides/              # Theme customization templates
-│   ├── features/               # Feature documentation
-│   ├── getting-started/        # Getting started guides
-│   ├── internal/               # Internal-only documentation
-│   └── home/                   # Home section
-├── site/                       # Generated external site (not in git)
-├── site-internal/              # Generated internal site (not in git)
-├── mkdocs.yml                  # External site configuration
-├── mkdocs.internal.yml         # Internal site configuration
-├── build.sh                    # Main build script
-└── README.md                   # Project overview
-Content Authoring
-Internal-Only Content
+#### Internal-Only Content
 To add internal-only content within pages, use the internal admonition:
 markdownRegular content is visible to everyone by default.
 
 !!! internal "Internal Only"
     This information is restricted to internal staff only.
-OS-Specific Instructions
+
+#### OS-Specific Instructions
 markdown=== "Windows"
     Windows-specific instructions go here
 
@@ -128,53 +109,8 @@ markdown=== "Windows"
 
 === "Linux"
     Linux-specific instructions go here
-Advanced Configuration
-Script Options
-The build script supports various configuration options:
-bash./build.sh [external|internal] [output_directory] [environment] [serve] [port] [server_address]
-Parameters:
 
-Build Type: external or internal (default: external)
-Output Directory: Where to save the built site (default: site)
-Environment: development, staging, or production (default: production)
-Serve: Add serve to start a local server
-Port: Server port when using serve (default: 8001 for external, 8000 for internal)
-Server Address: IP address to bind server to (default: 0.0.0.0)
-
-Examples:
-bash# External docs in development mode at port 8001
-./build.sh external site development serve 8001
-
-# Internal docs in staging environment
-./build.sh internal site-internal staging serve 8000
-
-# Build production-ready external docs without serving
-./build.sh external site production
-Troubleshooting
-Common issues and solutions:
-
-Permission denied when running build.sh
-bashchmod +x build.sh
-
-Python version issues
-Ensure you're using Python 3.11 or higher:
-bashpython --version
-
-Port is already in use
-Start the server on a different port:
-bash./build.sh external site development serve 8000
-
-Missing dependencies
-If you see errors about missing packages:
-bashpip install -e .
-
-"mkdocs: command not found" error
-Use the Python module syntax instead:
-bashpython -m mkdocs build -f mkdocs.yml -d site
-cd site && python -m http.server 5000 --bind 0.0.0.0
-
-
-Customization
+### Customization
 The Knowledge Base is designed to be highly customizable:
 
 Styling: Modify docs/assets/stylesheets/extra.css for custom CSS
@@ -182,27 +118,23 @@ JavaScript: Enhance functionality in docs/assets/javascripts/site-core.js and ex
 Templates: Override theme components in docs/overrides/ directory
 Config: Adjust site settings in mkdocs.yml and mkdocs.internal.yml
 
-Deployment
-GitHub Pages
-bash# Build the site
-./build.sh external site production build
-
-# Deploy to GitHub Pages (using mike for versioning)
+### Deploy to GitHub Pages (using mike for versioning)
 mike deploy --push --update-aliases latest main
 Custom Server Deployment
 bash# Build the production site
 ./build.sh external site production build
 
-# Copy the built site to your web server
+### Copy the built site to your web server
 rsync -avz --delete site/ user@server:/path/to/webroot/
 Version Management
 This project uses Mike for managing multiple versions of documentation:
 bash# Deploy version 1.0.0 as "latest"
 mike deploy 1.0.0 latest
 
-# Set default version
+### Set default version
 mike set-default latest
-Contributing
+
+### Contributing
 We welcome contributions to improve this Knowledge Base! Here's how to contribute:
 
 Fork the repository to your GitHub account
@@ -213,13 +145,16 @@ Commit your changes with clear, descriptive commit messages
 Submit a pull request to the main repository
 
 Before submitting a pull request, please run:
-bash# Check links
+
+#### Check links
 ./check_links.sh
 
-# Lint markdown
+#### Lint markdown
 ./lint.sh
 
-# Verify documentation builds without errors
+#### Verify documentation builds without errors
 ./verify_docs.sh
-License
+
+
+### License
 Copyright © 2025. All rights reserved.
