@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Fix Markdown Script for Sitetracker Knowledge Base
+# Fix Markdown Script for General Knowledge Base
 # This script automatically fixes common markdown linting issues in documentation files
 
 set -e
@@ -18,7 +18,7 @@ VERBOSE=false
 # Display banner
 function show_banner {
     echo -e "${BLUE}════════════════════════════════════════════════════${NC}"
-    echo -e "${BLUE}   Sitetracker Knowledge Base Markdown Fixer   ${NC}"
+    echo -e "${BLUE}   General Knowledge Base Markdown Fixer   ${NC}"
     echo -e "${BLUE}════════════════════════════════════════════════════${NC}"
     echo
 }

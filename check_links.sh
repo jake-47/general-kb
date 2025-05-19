@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Check Links Script for Sitetracker Knowledge Base
+# Check Links Script for Knowledge Base
 # This script provides a simple wrapper around the link_checker.py Python script
 # for finding broken links in the documentation.
 

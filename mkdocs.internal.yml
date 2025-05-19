@@ -138,15 +138,9 @@ extra_css:
   - assets/stylesheets/extra.css
   - assets/stylesheets/custom-admonitions.css
 extra_javascript:
-  - assets/javascripts/fix-material-errors.js
-  - assets/javascripts/error-handler.js
-  - assets/javascripts/utils.js
-  - assets/javascripts/config/env-config.js
-  - assets/javascripts/config-loader.js
-  - assets/javascripts/internal-content-handler.js
+  - assets/javascripts/site-core.js
   - assets/javascripts/extra.js
-  - assets/javascripts/version-dropdown.js
-  - assets/javascripts/auto-link.js
+
 
 # Page tree - includes both public and internal docs
 nav:

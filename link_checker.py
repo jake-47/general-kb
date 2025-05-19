@@ -35,7 +35,7 @@ from requests.exceptions import RequestException
 
 # Constants
 DEFAULT_TIMEOUT = 10  # seconds
-USER_AGENT = "SitetrackerDocumentationLinkChecker/1.0"
+USER_AGENT = "GeneralDocumentationLinkChecker/1.0"
 MARKDOWN_EXTENSIONS = {".md", ".markdown"}
 ANCHOR_PATTERN = re.compile(r'^#+\s+(.+?)(?:\s+.*)?$', re.MULTILINE)
 LINK_PATTERN = re.compile(r'\[([^\]]+)\]\(([^)]+)\)')

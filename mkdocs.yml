@@ -1,9 +1,9 @@
 # Project configuration for external/public documentation
 ## This is the main configuration file that contains most of your site settings
 site_name: "Knowledge Base"
-site_description: Knowledge Base for Sitetracker's products and services
-site_author: SiteTracker
-site_url: https://sitetracker.com/kb
+site_description: General Knowledge Base for a products or services company
+site_author: Company
+site_url: https://company.com/kb
 
 # Repository (disabled)
 # repo_name: sitetracker/docs
@@ -11,7 +11,7 @@ site_url: https://sitetracker.com/kb
 # edit_uri: edit/trunk/docs/
 
 # Copyright
-copyright: Copyright &copy; 2023 SiteTracker, Inc.
+copyright: Copyright &copy; 2023 Company, Inc.
 
 # Configuration
 theme:
@@ -136,7 +136,7 @@ markdown_extensions:
       normalize_issue_symbols: true
       repo_url_shortener: true
       repo_url_shorthand: true
-      user: sitetracker
+      user: user
       repo: docs
   - pymdownx.mark
   - pymdownx.smartsymbols
@@ -156,15 +156,10 @@ markdown_extensions:
 extra_css:
   - assets/stylesheets/extra.css
 extra_javascript:
-  - assets/javascripts/fix-material-errors.js
-  - assets/javascripts/error-handler.js
-  - assets/javascripts/utils.js
-  - assets/javascripts/config/env-config.js
-  - assets/javascripts/config-loader.js
-  - assets/javascripts/internal-content-handler.js
+  - assets/javascripts/site-core.js
   - assets/javascripts/extra.js
   - assets/javascripts/algolia-search.js
-  - assets/javascripts/auto-link.js
+
 
 # Page tree
 nav:

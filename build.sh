@@ -17,11 +17,11 @@ command_exists() {
 if command_exists markdownlint; then
     echo "Running markdownlint to check Markdown files..."
     if markdownlint docs/; then
-        echo "✅ Markdown files passed linting checks."
+        echo "Markdown files passed linting checks."
     else
-        echo "⚠️ Markdown linting found issues. Please fix them for better consistency."
-        echo "   To automatically fix some issues, run: markdownlint --fix docs/"
-        echo "   Continuing with build process..."
+        echo "Markdown linting found issues. Please fix them for better consistency."
+        echo "To automatically fix some issues, run: markdownlint --fix docs/"
+        echo "Continuing with build process..."
     fi
 else
     echo "ℹ️ markdownlint-cli not found. Skipping Markdown linting."
@@ -110,12 +110,3 @@ else
 fi
 
 echo "Documentation built successfully in $OUTPUT_DIR"
-
-# Note: The serve functionality is now handled directly by the mkdocs serve command above
-# This section is kept for backward compatibility with the older approach
-if [ "$4" == "serve" ] && [ "$USE_PYTHON_SERVER" == "true" ]; then
-    PORT=${5:-5000}
-    SERVER_ADDR=${6:-127.0.0.1}
-    echo "Serving documentation at http://$SERVER_ADDR:$PORT using Python's HTTP server"
-    cd $OUTPUT_DIR && python -m http.server $PORT --bind $SERVER_ADDR
-fi

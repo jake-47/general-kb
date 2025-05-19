@@ -29,7 +29,7 @@ The Sitetracker Knowledge Base is a comprehensive documentation platform designe
 
 ## Key Features
 
-### 🎨 Design and Branding
+### Design and Branding
 
 - **Professional UI**: Clean, modern Knowledge Base experience with Material theme
 - **Responsive Design**: Fully responsive layout that works on all device sizes
@@ -37,14 +37,14 @@ The Sitetracker Knowledge Base is a comprehensive documentation platform designe
 - **Theme-aware Logo**: Automatic logo switching between light and dark modes
 - **Print Optimization**: Comprehensive print styles for PDF generation
 
-### 🧭 Navigation and Structure
+### Navigation and Structure
 
 - **Streamlined Navigation**: Simplified left-side navigation with intuitive hierarchy
 - **Collapsible Sections**: Dropdown arrows for collapsible sections
 - **In-place Expansion**: Navigation expands sections in place
 - **Section Index Pages**: Section parent pages provide high-level overviews
 
-### 🔍 Search and Content Management
+### Search and Content Management
 
 - **Centered Search Bar**: Optimized search layout and behavior
 - **Content Controls**: Internal/External content separation with admonition boxes
@@ -52,7 +52,7 @@ The Sitetracker Knowledge Base is a comprehensive documentation platform designe
 - **Heading Level Control**: Right panel shows only level 2-4 headings, not page titles
 - **Feature Documentation**: Comprehensive docs for key features
 
-### 🚀 Technical Features
+### Technical Features
 
 - **Documentation as Code**: Complete docs-as-code workflow with Git integration
 - **MkDocs Framework**: Built on MkDocs with Material theme
